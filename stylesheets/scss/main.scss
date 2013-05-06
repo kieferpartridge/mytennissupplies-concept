@@ -4,8 +4,8 @@
 $lightgrey: darken(white, 20%);
 $medgrey: darken(white, 40%);
 $darkgrey: darken(white, 80%);
-$blue: #1F61A9;
-$green: #3EA56D;
+$blue: #2B76C9;
+$green: #439C36;
 
 /* Global */
 
@@ -14,10 +14,10 @@ $green: #3EA56D;
 
   position: relative;
 
-  transition: width 0.1s, height 0.1s, opacity, 0.1s, margin 0.1s, color 0.1s, background 0.1s;
-  -moz-transition: width 0.1s, height 0.1s, opacity, 0.1s, margin 0.1s, color 0.1s, background 0.1s;
-  -webkit-transition: width 0.1s, height 0.1s, opacity, 0.1s, margin 0.1s, color 0.1s, background 0.1s;
-  -o-transition: width 0.1s, height 0.1s, opacity, 0.1s, margin 0.1s, color 0.1s, background 0.1s;
+  transition: width 0.1s, height 0.1s, opacity, 0.1s, margin 0.1s, background 0.1s;
+  -moz-transition: width 0.1s, height 0.1s, opacity, 0.1s, margin 0.1s, background 0.1s;
+  -webkit-transition: width 0.1s, height 0.1s, opacity, 0.1s, margin 0.1s, background 0.1s;
+  -o-transition: width 0.1s, height 0.1s, opacity, 0.1s, margin 0.1s, background 0.1s;
 }
 
 /* Basics */
@@ -28,10 +28,10 @@ html {
 }
 
 body {
-  background: darken(white, 5%);
+  background: url('../images/p6.png');
   color: darken(white, 75%);
   font-weight: 400;
-  font-family: "Open Sans", "helvetica neue", helvetica, arial, sans-serif;
+  font-family: "Open Sans", "lucida grande", "helvetica neue", helvetica, arial, sans-serif;
   font-size: 16px;
 }
 
@@ -86,8 +86,8 @@ h4 {
 
 p {
   clear: both;
-  font-size: 1rem;
-  line-height: 2rem;
+  font-size: 0.85rem;
+  line-height: 1.7rem;
   padding: 0 0 2rem 0;
 
   &:last-child {
@@ -139,39 +139,6 @@ ul {
   }
 }
 
-/* Misc */
-
-.circle {
-  border-radius: 50%;
-  display: inline-block;
-  height: 50px;
-  width: 50px;
-  line-height: 30px;
-  font-size: 1.5rem;
-  background: $medgrey;
-  color: white;
-  padding: 10px;
-  text-align: center;
-
-  &.blue {
-    background: $blue;
-  }
-
-  &.green {
-    background: $green;
-  }
-
-  &.white {
-    background: white;
-  }
-
-  &.center {
-    position: absolute;
-    left: 50%;
-    margin: -10px 0 0 -25px;
-  }
-}
-
 h1, h2, h3, h4, p {
 
   .circle {
@@ -210,6 +177,10 @@ a {
   letter-spacing: 0.1em;
   font-weight: 300;
 
+  i {
+    margin-right: 0.5rem;
+  }
+
   &:hover {
     color: white;
     background: darken($medgrey, 4%);
@@ -231,6 +202,62 @@ a {
       background: darken($green, 6%);
     }
   }
+
+  &.blue {
+    background: $blue;
+
+    &:hover {
+      background: darken($blue, 4%);
+    }
+
+    &:active {
+      background: darken($blue, 6%);
+    }
+  }
+
+  &.fade {
+    background: lighten($lightgrey, 10%);
+    color: $darkgrey;
+
+    &:hover {
+      background: lighten($lightgrey, 6%);
+      color: $darkgrey;
+    }
+
+    &:active {
+      background: $lightgrey;
+      color: $darkgrey;
+    }
+  }
+
+  &.full {
+    width: 100%;
+    text-align: center;
+    clear: both;
+
+    & + .full {
+      margin-top: 1rem;
+    }
+  }
+}
+
+/* Miscellaneous */
+
+.circle {
+  display: block;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  margin: 0 auto 2rem auto;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: $blue;
+  color: white;
+
+  &.green {
+    background: $green;
+  }
 }
 
 /* Layout */
@@ -248,297 +275,200 @@ a {
   text-align: center;
 }
 
-.wrapper {
-  padding: 6rem 4rem 0 4rem;
-  height: 100%;
-  width: 100%;
-}
+/* Header */
 
-.nav {
-  display: block;
-  width: 100%;
-  height: 6rem;
-  line-height: 4rem;
-  padding: 1rem 4rem;
-  margin-top: -6rem;
+.header {
+  overflow: auto;
+  padding: 2rem 0;
 
   a:not(.button) {
-    display: inline-block;
     text-decoration: none;
-    font-size: 0.8rem;
-    line-height: 2rem;
-    margin-left: 3rem;
-    letter-spacing: 0.1rem;
-
-    &:hover {
-      color: $blue;
-    }
-
-    &.current {
-      color: $green;
-    }
 
     &.logo {
-      margin: 0;
-      line-height: 4rem;
-
-      img {
-        margin: 1rem 0 0 0;
-        height: 2rem;
-      }
+      font-size: 1.5rem;
     }
-  }
-
-  .button {
-    margin-left: 3rem;
   }
 }
 
-.content {
-  @include border-radius(0.2rem 0.2rem 0 0);
-  @include box-shadow(0 0 5px $medgrey);
-  background: white;
-  width: 100%;
-  padding: 2rem;
-  margin-bottom: -0.2rem;
+/* Navigation */
 
-  .header {
-    @include box-sizing(content-box);
-    margin: -2rem -2rem 2rem -2rem;
-    padding: 2rem;
-    border-bottom: 1px solid $lightgrey;
+.nav {
+  padding: 1rem;
+  background: $blue;
 
-    .image {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
-      opacity: 0.5;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-    }
+  a {
+    color: white;
+    text-decoration: none;
+  }
 
-    a {
-      text-decoration: none;
+  .menu {
+    display: block;
+    width: 100%;
+    text-align: center;
+    list-style: none;
 
-      &:hover {
-        color: $green!important;
+    & > li {
+      display: inline-block;
+      padding: 1rem 0;
+
+      & > a {
+        border-radius: 0.25rem;
+        font-size: 1.5rem;
+        font-weight: 300;
+        line-height: 1.5em;
+        padding: 1rem 2rem;
+
+        &:hover {
+          background: lighten($blue, 4%);
+
+          & + ul {
+            height: auto;
+            padding: 0.5rem;
+            z-index: 1;
+          }
+        }
       }
-    }
 
-    h1 {
-      padding: 0 0 4rem 0;
-    }
+      & > ul {
+        @include box-sizing(content-box);
+        border-radius: 0 0 0.25rem 0.25rem;
+        background: $blue;
+        padding: 0 0.5rem;
+        margin: 0 0 0 -0.5rem;
+        height: 0;
+        width: 100%;
+        overflow: hidden;
+        position: absolute;
+        top: 4rem;
+        left: 0;
+        list-style: none;
 
-    .details {
-      width: 100%;
-      font-size: 0.75em;
+        &:hover {
+          height: auto;
+          padding: 0.5rem;
+          z-index: 1;
+        }
 
-      span {
-        margin-right: 0.5rem;
-
-        &.categories {
-          margin: 0 0 0 0.5rem;
+        li {
+          padding: 0;
 
           a {
-            @include border-radius(0.2rem);
-            margin: 0 0.5rem 0 0;
-            padding: 0.25rem 0.5rem;
-            height: 1.2rem;
-            line-height: 1.2rem;
-            background: $lightgrey;
+            display: block;
+            text-align: left;
+            padding: 1rem 0.5rem;
+            width: 100%;
 
             &:hover {
-              background: lighten($lightgrey, 10%);
+              border-radius: 0.25rem;
+              background: lighten($blue, 4%);
+            }
+
+            &:active {
+              background: lighten($blue, 6%);
             }
           }
         }
       }
     }
-
-    *:last-child {
-      padding-bottom: 0
-    }
   }
+}
 
-  .sidebar {
-    width: 14rem;
-    padding: 0 0 0 2rem;
-    margin: 0 0 2rem 2rem;
-    float: right;
-    border-left: 1px solid $blue;
-    font-size: 0.8rem;
-    z-index: 1;
+/* Content */
 
-    a {
-      display: block;
-      width: 100%;
-      clear: both;
-      padding: 1rem 0;
+.content {
+  padding: 4rem 0;
+}
 
-      &:last-of-type {
-        padding: 1rem 0 0 0;
-      }
-    }
-  }
+.info {
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border: 2px dashed $green;
+}
 
-  blockquote {
-    font-size: 1.25rem;
-    padding: 2rem 2rem 2rem 0;
-    width: 50%;
-    float: left;
-    line-height: 2em;
-    word-wrap: break-word;
-    color: $green;
-    z-index: 1
-  }
+.tile {
+  @include box-shadow(0 0 5px $medgrey);
+  background: white;
+  border-radius: 0.25rem;
+  padding: 2rem;
+  text-align: center;
 
-  .article {
-
-    h2 {
-      padding: 2rem 0;
-
-      &:first-child {
-        padding: 0 0 2rem 0;
-      }
-    }
-
-    p {
-      clear: none;
-    }
-  }
-
-  .section {
+  h3 {
     @include box-sizing(content-box);
-    clear: both;
+    color: $green;
+    text-align: left;
+    margin: -2rem -2rem 2rem -2rem;
+    border-bottom: 1px solid $lightgrey;
+    padding: 2rem;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 25rem;
+
+  }
+
+  p {
+    text-align: left;
+  }
+
+  img + p, p.section {
     border-top: 1px solid $lightgrey;
     margin: 2rem -2rem -2rem -2rem;
     padding: 2rem;
-    width: 100%;
-
-    &.footer {
-      background: $medgrey;
-      border-top: 1px solid $darkgrey;
-
-      p {
-
-        &:first-of-type {
-          padding-top: 4rem;
-        }
-
-        .item {
-          margin: 0 0.5rem;
-        }
-      }
-    }
   }
 
-  .tile {
-    @include border-radius(0.2rem);
-    background: $lightgrey;
-    padding: 2rem 1rem;
-
-    .circle {
-      display: block;
-      margin: 0 auto 1rem auto;
-      color: $darkgrey;
-    }
-
-    h3 {
-      color: $darkgrey;
-      padding: 0;
-    }
-  }
-
-  .tour {
-
-    &::after {
-      content: "";
-      width: 1px;
-      height: 100%;
-      background: $lightgrey;
-      position: absolute;
-      display: block;
-      top: 0;
-      left: 50%;
-    }
-
-    .circle {
-
-      &.center {
-        width: 100px;
-        height: 100px;
-        border: 25px solid white;
-        z-index: 2;
-        margin: -25px 0 0 -50px;
-      }
-    }
+  .columns {
 
     p {
-      background: white;
-      z-index: 1;
+      padding: 0;
+      line-height: 2rem;
     }
+  }
 
-    & > p {
-      padding: 2rem 0;
+  .list {
+
+    a {
+      @extend .button;
+      @extend .button.fade;
+      margin-bottom: 2px;
+      border-radius: 0;
+      width: 100%;
+      text-align: left;
+      color: $darkgrey;
 
       &:first-child {
-        padding-top: 0;
+        border-radius: 0.25rem 0.25rem 0 0;
       }
 
-      & + p {
-        margin-top: -2rem;
+      &:last-child {
+        border-radius: 0 0 0.25rem 0.25rem;
       }
     }
   }
 }
 
-/* Grid */
+/* Footer */
 
-.block {
-  @include border-radius(0.2rem);
-  background: rgba(white, 0.2);
-  border: 0.2rem solid white;
-  min-height: 20rem;
+.footer {
+  border-top: 0;
+  padding: 2rem 0;
+  text-align: center;
+}
 
-  &.device {
-    padding-top: 1.6rem;
-    height: 29.8rem;
-    display: inline-block;
-    overflow: hidden;
+/* Columns */
 
-    &::before {
-      @include border-radius(1rem);
-      background: white;
-      content: "";
-      display: block;
-      width: 0.5rem;
-      height: 0.5rem;
-      position: absolute;
-      top: 0.5rem;
-      left: 0.5rem;
-    }
+.columns {
 
-    &::after {
-      background: white;
-      content: "";
-      display: block;
-      width: 100%;
-      height: 0.2rem;
-      position: absolute;
-      top: 1.5rem;
-    }
+  &.two {
+    @include columns(2 2rem)
+  }
 
-    img {
-      width: 100%;
-      position: static;
-    }
+  &.three {
+    @include columns(3 2rem)
   }
 }
+
 
 /* Grid */
 
@@ -548,8 +478,6 @@ a {
   & + .row {
     padding-top: 2rem;
   }
-
-  /* Columns */
 
   .col-one {
     @include span-columns(1);
