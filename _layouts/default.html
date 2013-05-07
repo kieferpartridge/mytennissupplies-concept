@@ -13,61 +13,68 @@
 
   <body class="{{ page.keyword }}">
 
-    <div class="header">
+    <div class="nav">
       <div class="wrap">
         <div class="row">
-          <div class="col-two">
-            <a href="../index.html" class="logo">myTennisSupplies</a>
+          <div class="col-six">
+            <ul class="menu">
+              <li>
+                <a href="../racquets.html" class="current">Racquets</a>
+                <ul>
+                  <li><a href="../racquets.html">Racquets</a></li>
+                  <li><a href="../grips.html">Grips</a></li>
+                  <li><a href="../strings.html">Strings</a></li>
+                  <li><a href="../accessories.html">Accessories</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="../apparel.html">Apparel</a>
+                <ul>
+                  <li><a href="../shoes.html">Shoes</a></li>
+                  <li><a href="../hats.html">Hats &amp; Visors</a></li>
+                  <li><a href="../accessories.html">Accessories</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="../apparel.html">Other</a>
+                <ul>
+                  <li><a href="../tennisballs.html">Tennis Balls</a></li>
+                  <li><a href="../towels.html">Towels</a></li>
+                  <li><a href="../fitness.html">Fitness &amp; Therapy</a></li>
+                  <li><a href="../court equipment.html">Court Equipment</a></li>
+                  <li><a href="../education.html">Education</a></li>
+                </ul>
+              </li>
+            </ul>
           </div>
-          <div class="col-ten right">
-            <a href="../contact.html" class="button green">Contact us</a>
+          <div class="col-six">
+            <div class="group">
+              <a href="#" class="button">
+                <i class="fontawesome-user"></i>
+                Account
+              </a>
+              <a href="#" class="button green">
+                <i class="fontawesome-shopping-cart"></i>
+                Cart (2)
+              </a>
+              <a href="#" class="button">Help</a>
+              <a href="#" class="button">Sign out</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="nav">
+    <div class="content">
       <div class="wrap">
-        <ul class="menu">
-          <li>
-            <a href="../racquets.html">Racquets</a>
-            <ul>
-              <li><a href="../racquets.html">Racquets</a></li>
-              <li><a href="../grips.html">Grips</a></li>
-              <li><a href="../strings.html">Strings</a></li>
-              <li><a href="../accessories.html">Accessories</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="../apparel.html">Apparel</a>
-            <ul>
-              <li><a href="../shoes.html">Shoes</a></li>
-              <li><a href="../hats.html">Hats &amp; Visors</a></li>
-              <li><a href="../accessories.html">Accessories</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="../apparel.html">Other</a>
-            <ul>
-              <li><a href="../tennisballs.html">Tennis Balls</a></li>
-              <li><a href="../towels.html">Towels</a></li>
-              <li><a href="../fitness.html">Fitness &amp; Therapy</a></li>
-              <li><a href="../court equipment.html">Court Equipment</a></li>
-              <li><a href="../education.html">Education</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="wrap">
-      <div class="content">
         <div class="row">
           {{ content }}
         </div>
       </div>
+    </div>
 
-      <div class="footer">
+    <div class="footer">
+      <div class="wrap">
         <span class="circle blue center">
           <i class="fontawesome-phone"></i>
         </span>
@@ -79,7 +86,6 @@
         </p>
         <p class="small">&copy; myTennisSupplies. All rights reserved.</p>
       </div>
-
     </div>
 
   </body>

@@ -77,6 +77,9 @@ h2 {
 
 h3 {
   font-size: 1.2rem;
+  color: $green;
+  text-align: left;
+  font-weight: normal;
 }
 
 h4 {
@@ -166,7 +169,7 @@ a {
 }
 
 .button {
-  @include border-radius(0.25rem);
+  border-radius: 0.25rem;
   background: $medgrey;
   color: white;
   display: inline-block;
@@ -241,9 +244,24 @@ a {
   }
 }
 
+.group {
+
+  .button {
+    border-radius: 0;
+
+    &:first-child {
+      border-radius: 0.25rem 0 0 0.25rem;
+    }
+
+    &:last-child {
+      border-radius: 0 0.25rem 0.25rem 0;
+    }
+  }
+}
+
 /* Miscellaneous */
 
-.circle {
+span.circle {
   display: block;
   padding: 1rem;
   text-align: center;
@@ -258,6 +276,10 @@ a {
   &.green {
     background: $green;
   }
+}
+
+img.circle {
+  border-radius: 50%;
 }
 
 /* Layout */
@@ -275,56 +297,55 @@ a {
   text-align: center;
 }
 
-/* Header */
-
-.header {
-  overflow: auto;
-  padding: 2rem 0;
-
-  a:not(.button) {
-    text-decoration: none;
-
-    &.logo {
-      font-size: 1.5rem;
-    }
-  }
-}
-
 /* Navigation */
 
 .nav {
   padding: 1rem;
   background: $blue;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
 
   a {
     color: white;
     text-decoration: none;
   }
 
+  .group {
+    background: white;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    width: auto;
+    float: right;
+  }
+
   .menu {
     display: block;
     width: 100%;
-    text-align: center;
     list-style: none;
 
     & > li {
       display: inline-block;
-      padding: 1rem 0;
+      padding: 0.5rem 0;
 
       & > a {
         border-radius: 0.25rem;
         font-size: 1.5rem;
         font-weight: 300;
         line-height: 1.5em;
-        padding: 1rem 2rem;
+        padding: 0.5rem 2rem;
+
+        &:hover, &.current {
+          background: lighten($blue, 4%);
+        }
 
         &:hover {
-          background: lighten($blue, 4%);
 
           & + ul {
             height: auto;
             padding: 0.5rem;
-            z-index: 1;
           }
         }
       }
@@ -342,11 +363,11 @@ a {
         top: 4rem;
         left: 0;
         list-style: none;
+        z-index: 1;
 
         &:hover {
           height: auto;
           padding: 0.5rem;
-          z-index: 1;
         }
 
         li {
@@ -375,8 +396,13 @@ a {
 
 /* Content */
 
-.content {
-  padding: 4rem 0;
+body {
+
+  & > .content {
+    background: url('../images/p6.png');
+    padding: 7.5rem 0 2rem 0;
+    z-index: 1;
+  }
 }
 
 .info {
@@ -386,6 +412,19 @@ a {
   border: 2px dashed $green;
 }
 
+.stack {
+  @include box-shadow(0 0 5px $medgrey);
+  background: white;
+  border-radius: 0.25rem;
+  display: block;
+  width: 100%;
+  margin: 0 0 2rem 0;
+
+  .tile {
+    @include transform(rotate(-1.5deg));
+  }
+}
+
 .tile {
   @include box-shadow(0 0 5px $medgrey);
   background: white;
@@ -393,29 +432,83 @@ a {
   padding: 2rem;
   text-align: center;
 
-  h3 {
-    @include box-sizing(content-box);
-    color: $green;
-    text-align: left;
-    margin: -2rem -2rem 2rem -2rem;
-    border-bottom: 1px solid $lightgrey;
-    padding: 2rem;
+  & + .tile {
+    margin-top: 2rem;
   }
 
   img {
     max-width: 100%;
     max-height: 25rem;
-
   }
 
   p {
     text-align: left;
   }
 
-  img + p, p.section {
+  img + p, .section {
     border-top: 1px solid $lightgrey;
     margin: 2rem -2rem -2rem -2rem;
     padding: 2rem;
+  }
+
+  .side {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 11rem;
+    height: 100%;
+    padding: 2rem;
+    border-right: 1px solid $lightgrey;
+
+    img {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.25rem;
+      border: 1px solid $lightgrey;
+    }
+
+    & + .content {
+      padding: 0 0 0 12rem;
+    }
+  }
+
+  .tabs {
+    display: block;
+    float: left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2.566666667rem;
+    border-bottom: 1px solid $lightgrey;
+    text-align: left;
+
+    & + .content {
+      padding: 2.5rem 0 0 0;
+    }
+
+    a {
+      @extend .button;
+      @extend .button.fade;
+      background: none;
+      border-radius: 0;
+      margin: 0;
+      color: $darkgrey;
+
+      &:first-child {
+        border-radius: 0.25rem 0 0 0;
+      }
+
+      &.current {
+        background: lighten($lightgrey, 10%);
+        border-left: 1px solid $lightgrey;
+        border-right: 1px solid $lightgrey;
+      }
+
+      &:hover {
+        background: lighten($lightgrey, 4%)
+      }
+    }
   }
 
   .columns {
@@ -451,9 +544,93 @@ a {
 /* Footer */
 
 .footer {
-  border-top: 0;
+  background: rgba(0,0,0,0.1);
+  border-top: 1px solid $lightgrey;
   padding: 2rem 0;
   text-align: center;
+  width: 100%;
+}
+
+/* Forms */
+
+form {
+
+  .field {
+    clear: both;
+    width: 100%;
+    padding: 0 0 1rem 0;
+
+    &:last-child {
+      padding: 0;
+    }
+
+    select {
+      width: 100%;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"] {
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+      width: 100%;
+      padding: 0.5rem;
+      border: 2px solid $lightgrey;
+      outline: none;
+      margin: 0;
+
+      &:focus {
+        border: 2px solid $green;
+      }
+    }
+
+    &.quantity {
+
+      input[type="text"], input[type="email"], input[type="password"] {
+        font-size: 1.5rem;
+        padding: 0.5rem 3.5rem;
+      }
+
+      a {
+        @extend .button;
+        @extend .button.fade;
+        border-radius: 0;
+        position: absolute;
+        padding: 0.35rem 1rem;
+        top: 1rem;
+        left: 1rem;
+        z-index: 1;
+
+        &.minus {
+          border-right: 2px solid $lightgrey;
+          margin: 2px 0 0 2px;
+        }
+
+        &.plus {
+          border-left: 2px solid $lightgrey;
+          margin: 2px 2px 0 0;
+          left: auto;
+          right: 1rem;
+        }
+
+        i {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  &.grey {
+    border-radius: 0.25rem;
+    background: lighten($lightgrey, 10%);
+
+    .field {
+      padding: 1rem;
+      border-bottom: 1px solid $lightgrey;
+
+      &:last-child {
+        border: 0;
+      }
+    }
+  }
 }
 
 /* Columns */
@@ -468,7 +645,6 @@ a {
     @include columns(3 2rem)
   }
 }
-
 
 /* Grid */
 
