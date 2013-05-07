@@ -28,7 +28,7 @@ html {
 }
 
 body {
-  background: url('../images/p6.png');
+  background: url('../images/bg.png');
   color: darken(white, 75%);
   font-weight: 400;
   font-family: "Open Sans", "lucida grande", "helvetica neue", helvetica, arial, sans-serif;
@@ -87,6 +87,11 @@ h4 {
   font-weight: bold;
 }
 
+h5 {
+  text-transform: uppercase;
+  padding: 0;
+}
+
 p {
   clear: both;
   font-size: 0.85rem;
@@ -107,6 +112,14 @@ p {
     font-size: 0.75rem;
     line-height: 1.5rem;
     padding: 0;
+  }
+
+  &.green {
+    color: $green;
+  }
+
+  & + h1 {
+    margin-top: -2rem;
   }
 }
 
@@ -164,6 +177,10 @@ a {
   text-decoration: underline;
 
   &:hover {
+    text-decoration: none;
+  }
+
+  &.tile {
     text-decoration: none;
   }
 }
@@ -276,10 +293,19 @@ span.circle {
   &.green {
     background: $green;
   }
+
+  &.grey {
+    background: $lightgrey;
+    color: $darkgrey;
+  }
 }
 
 img.circle {
   border-radius: 50%;
+  padding: 0.25rem;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid $lightgrey;
 }
 
 /* Layout */
@@ -400,7 +426,7 @@ body {
 
   & > .content {
     background: url('../images/p6.png');
-    padding: 7.5rem 0 2rem 0;
+    padding: 9.5rem 0 2rem 0;
     z-index: 1;
   }
 }
@@ -439,6 +465,7 @@ body {
   img {
     max-width: 100%;
     max-height: 25rem;
+    margin: 0 auto 2rem auto;
   }
 
   p {
@@ -449,6 +476,13 @@ body {
     border-top: 1px solid $lightgrey;
     margin: 2rem -2rem -2rem -2rem;
     padding: 2rem;
+  }
+
+  h2, h3, h4, p {
+
+    & + .section {
+      margin-top: 0;
+    }
   }
 
   .side {
@@ -463,8 +497,6 @@ body {
     img {
       width: 100%;
       margin-bottom: 1rem;
-      padding: 0.25rem;
-      border: 1px solid $lightgrey;
     }
 
     & + .content {
@@ -473,8 +505,6 @@ body {
   }
 
   .tabs {
-    display: block;
-    float: left;
     position: absolute;
     top: 0;
     left: 0;
@@ -494,6 +524,8 @@ body {
       border-radius: 0;
       margin: 0;
       color: $darkgrey;
+      display: block;
+      float: left;
 
       &:first-child {
         border-radius: 0.25rem 0 0 0;
@@ -545,7 +577,7 @@ body {
 
 .footer {
   background: rgba(0,0,0,0.1);
-  border-top: 1px solid $lightgrey;
+  border-top: 1px solid $medgrey;
   padding: 2rem 0;
   text-align: center;
   width: 100%;
@@ -647,6 +679,26 @@ form {
 }
 
 /* Grid */
+
+.grid {
+
+  .tile {
+    padding: 1rem;
+
+    img {
+      margin: 0 auto 1rem auto;
+    }
+
+    img + p, .section {
+      margin: 1rem -1rem -1rem -1rem;
+      padding: 1rem;
+    }
+
+    & + .tile {
+      margin-top: 0;
+    }
+  }
+}
 
 .row {
   @include outer-container;
