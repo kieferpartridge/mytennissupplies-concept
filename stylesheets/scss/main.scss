@@ -14,10 +14,10 @@ $green: #439C36;
 
   position: relative;
 
-  transition: width 0.1s, height 0.1s, opacity, 0.1s, margin 0.1s, background 0.1s;
-  -moz-transition: width 0.1s, height 0.1s, opacity, 0.1s, margin 0.1s, background 0.1s;
-  -webkit-transition: width 0.1s, height 0.1s, opacity, 0.1s, margin 0.1s, background 0.1s;
-  -o-transition: width 0.1s, height 0.1s, opacity, 0.1s, margin 0.1s, background 0.1s;
+  // transition: width 0.1s, height 0.1s, opacity, 0.1s, margin 0.1s, background 0.1s;
+  // -moz-transition: width 0.1s, height 0.1s, opacity, 0.1s, margin 0.1s, background 0.1s;
+  // -webkit-transition: width 0.1s, height 0.1s, opacity, 0.1s, margin 0.1s, background 0.1s;
+  // -o-transition: width 0.1s, height 0.1s, opacity, 0.1s, margin 0.1s, background 0.1s;
 }
 
 /* Basics */
@@ -25,6 +25,7 @@ $green: #439C36;
 html {
   min-height: 100%;
   min-width: 100%;
+  font-size: 16px;
 }
 
 body {
@@ -32,7 +33,10 @@ body {
   color: darken(white, 75%);
   font-weight: 400;
   font-family: "Open Sans", "lucida grande", "helvetica neue", helvetica, arial, sans-serif;
-  font-size: 16px;
+}
+
+.mobile-show {
+  display: none!important;
 }
 
 /* Typography */
@@ -182,6 +186,10 @@ a {
 
   &.tile {
     text-decoration: none;
+
+    &:hover {
+      @include box-shadow(0 0 10px $medgrey);
+    }
   }
 }
 
@@ -308,6 +316,14 @@ img.circle {
   border: 1px solid $lightgrey;
 }
 
+.badge {
+  border-radius: (0.25rem);
+  padding: 0 0.5rem;
+  background: $lightgrey;
+  color: $darkgrey;
+  font-size: 0.85em;
+}
+
 /* Layout */
 
 .wrap {
@@ -323,16 +339,45 @@ img.circle {
   text-align: center;
 }
 
+/* Cart */
+
+.cart {
+  @include transform(rotate(1deg));
+  @include box-shadow(0 0 5px $darkgrey);
+  background: white;
+  border-radius: 0.25rem;
+  margin: -32rem 2rem 2rem 2rem;
+
+  &.open {
+    margin: 2rem;
+  }
+
+  .content {
+    @include transform(rotate(-1deg));
+    @include box-shadow(0 0 5px $darkgrey);
+    background: white;
+    border-radius: 0.25rem;
+    padding: 2rem;
+    height: 30rem;
+    overflow-y: auto;
+  }
+}
+
 /* Navigation */
 
 .nav {
-  padding: 1rem;
+  padding: 1rem 0;
   background: $blue;
+  border-bottom: 1px solid darken($blue, 25%);
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 3;
+
+  & + .content {
+    padding: 7.5rem 0 3.5rem 0;
+  }
 
   a {
     color: white;
@@ -355,24 +400,27 @@ img.circle {
     & > li {
       display: inline-block;
       padding: 0.5rem 0;
+      margin: 0 0.5rem 0 0;
 
       & > a {
         border-radius: 0.25rem;
         font-size: 1.5rem;
         font-weight: 300;
         line-height: 1.5em;
-        padding: 0.5rem 2rem;
-
-        &:hover, &.current {
-          background: lighten($blue, 4%);
-        }
+        padding: 0.5rem 1rem;
 
         &:hover {
+          background: lighten($blue, 4%);
 
           & + ul {
             height: auto;
             padding: 0.5rem;
           }
+        }
+
+        &.current {
+          background: white;
+          color: $blue;
         }
       }
 
@@ -426,7 +474,6 @@ body {
 
   & > .content {
     background: url('../images/p6.png');
-    padding: 9.5rem 0 2rem 0;
     z-index: 1;
   }
 }
@@ -466,10 +513,18 @@ body {
     max-width: 100%;
     max-height: 25rem;
     margin: 0 auto 2rem auto;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   p {
     text-align: left;
+
+    &.fade {
+      color: $medgrey;
+    }
   }
 
   img + p, .section {
@@ -578,9 +633,29 @@ body {
 .footer {
   background: rgba(0,0,0,0.1);
   border-top: 1px solid $medgrey;
+  border-bottom: 1px solid $medgrey;
+  margin-bottom: -1px;
   padding: 2rem 0;
   text-align: center;
   width: 100%;
+
+  .circle {
+    position: absolute;
+    top: -3.5rem;
+    left: 50%;
+    margin: 0 0 0 -1.5rem;
+    background: white;
+    border: 1px solid $medgrey;
+    color: $green;
+  }
+
+  p {
+    padding: 0.5rem 0;
+  }
+
+  .item {
+    margin: 0 0.5rem;
+  }
 }
 
 /* Forms */
@@ -598,6 +673,9 @@ form {
 
     select {
       width: 100%;
+      border: 1px solid $medgrey;
+      height: 2rem;
+      outline: none;
     }
 
     input[type="text"], input[type="email"], input[type="password"] {

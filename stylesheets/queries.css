@@ -1,23 +1,23 @@
 /*
-Syntax error: Undefined mixin 'span-columns'.
-        on line 48 of stylesheets/scss/queries.scss, in `span-columns'
-        from line 48 of stylesheets/scss/queries.scss
+Syntax error: Undefined mixin 'box-sizing'.
+        on line 45 of stylesheets/scss/queries.scss, in `box-sizing'
+        from line 45 of stylesheets/scss/queries.scss
 
-43:         margin-bottom: 0;
-44:       }
-45:     }
-46: 
-47:     .col-one {
-48:       @include span-columns(12);
-49:     }
-50: 
-51:     .col-two {
-52:       @include span-columns(6);
-53: 
+40:       max-width: 10rem;
+41:       margin: 0 auto 1rem auto;
+42:     }
+43: 
+44:     .side {
+45:       @include box-sizing(content-box);
+46:       position: relative;
+47:       height: auto;
+48:       width: 100%;
+49:       padding: 1rem;
+50:       margin: -1rem -1rem 1rem -1rem;
 
 Backtrace:
-stylesheets/scss/queries.scss:48:in `span-columns'
-stylesheets/scss/queries.scss:48
+stylesheets/scss/queries.scss:45:in `box-sizing'
+stylesheets/scss/queries.scss:45
 /Users/kieferpartridge/.rbenv/versions/1.9.3-p125/lib/ruby/gems/1.9.1/gems/sass-3.2.3/lib/sass/tree/visitors/perform.rb:251:in `visit_mixin'
 /Users/kieferpartridge/.rbenv/versions/1.9.3-p125/lib/ruby/gems/1.9.1/gems/sass-3.2.3/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/kieferpartridge/.rbenv/versions/1.9.3-p125/lib/ruby/gems/1.9.1/gems/sass-3.2.3/lib/sass/tree/visitors/perform.rb:98:in `visit'
@@ -80,4 +80,4 @@ stylesheets/scss/queries.scss:48
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'span-columns'.\A         on line 48 of stylesheets/scss/queries.scss, in `span-columns'\A         from line 48 of stylesheets/scss/queries.scss\A \A 43:         margin-bottom: 0;\A 44:       }\A 45:     }\A 46: \A 47:     .col-one {\A 48:       @include span-columns(12);\A 49:     }\A 50: \A 51:     .col-two {\A 52:       @include span-columns(6);\A 53: "; }
+  content: "Syntax error: Undefined mixin 'box-sizing'.\A         on line 45 of stylesheets/scss/queries.scss, in `box-sizing'\A         from line 45 of stylesheets/scss/queries.scss\A \A 40:       max-width: 10rem;\A 41:       margin: 0 auto 1rem auto;\A 42:     }\A 43: \A 44:     .side {\A 45:       @include box-sizing(content-box);\A 46:       position: relative;\A 47:       height: auto;\A 48:       width: 100%;\A 49:       padding: 1rem;\A 50:       margin: -1rem -1rem 1rem -1rem;"; }
