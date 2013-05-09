@@ -381,7 +381,7 @@ img.circle {
         width: 100%;
         overflow: hidden;
         position: absolute;
-        top: 4rem;
+        top: 3.25rem;
         left: 0;
         list-style: none;
         z-index: 1; }
@@ -696,7 +696,7 @@ form.grey {
 
 @media screen and (max-width: 640px) {
   .mobile-hide {
-    display: none; }
+    display: none!important; }
 
   .mobile-show {
     display: block!important; }
@@ -709,11 +709,14 @@ form.grey {
 
   body > .nav {
     position: relative;
-    padding: 1rem; }
+    padding: 1rem 1.5rem; }
+    body > .nav + .content {
+      padding: 1.5rem 1.5rem 3rem 1.5rem; }
     body > .nav .group {
       float: left; }
-  body > .content {
-    padding: 1rem 1rem 2.5rem 1rem; }
+
+  .mobile-menu a {
+    font-size: 1.1em; }
 
   .tile {
     padding: 1rem; }
