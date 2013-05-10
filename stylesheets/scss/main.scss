@@ -189,6 +189,7 @@ a {
 
     &:hover {
       @include box-shadow(0 0 10px $medgrey);
+      @include transform(rotate(0.5deg));
     }
   }
 }

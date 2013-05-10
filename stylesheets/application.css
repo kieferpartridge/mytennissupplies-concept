@@ -191,7 +191,12 @@ a {
     text-decoration: none; }
     a.tile:hover {
       -webkit-box-shadow: 0 0 10px #999999;
-      box-shadow: 0 0 10px #999999; }
+      box-shadow: 0 0 10px #999999;
+      -webkit-transform: rotate(0.5deg);
+      -moz-transform: rotate(0.5deg);
+      -ms-transform: rotate(0.5deg);
+      -o-transform: rotate(0.5deg);
+      transform: rotate(0.5deg); }
 
 .button, .tile .tabs a, .tile .list a, form .field.quantity a {
   border-radius: 0.25rem;
